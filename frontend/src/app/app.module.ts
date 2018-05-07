@@ -9,6 +9,7 @@ import { AppHeaderComponent } from './layout/header/header.component';
 import { AppFooterComponent } from './layout/footer/footer.component';
 import { AppAboutComponent } from './about/about.component';
 import { AppContactComponent } from './contact/contact.component';
+import { AppNotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'about'
+    component: AppNotFoundComponent
   }
 ];
 
@@ -32,7 +33,8 @@ const routes: Routes = [
     AppHeaderComponent,
     AppFooterComponent,
     AppAboutComponent,
-    AppContactComponent
+    AppContactComponent,
+    AppNotFoundComponent
   ],
   imports: [
     BrowserModule,
