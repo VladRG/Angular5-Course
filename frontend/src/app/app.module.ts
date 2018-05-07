@@ -56,7 +56,8 @@ const routes: Routes = [
     MatInputModule,
     AppPagesModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

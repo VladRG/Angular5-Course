@@ -12,9 +12,8 @@ export class AppLoginComponent implements OnInit {
 
   constructor() { }
 
-  login() {
-    console.log(this.username);
-    console.log(this.password);
+  login(loginForm) {
+    console.log();
   }
 
   ngOnInit() {
