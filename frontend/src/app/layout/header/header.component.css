@@ -4,15 +4,18 @@
   width: 100%;
 }
 
-ul {
-  list-style: none;
-}
-
-li {
-  display: inline;
-  padding-left: 12px;
+nav {
+  background: transparent !important;
 }
 
 .active {
   color: red;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.nav-item:focus {
+  outline: none;
 }

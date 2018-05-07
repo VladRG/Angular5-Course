@@ -13,6 +13,10 @@ import { AppNotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
+    path: '',
+    component: AppContactComponent
+  },
+  {
     path: 'about',
     component: AppAboutComponent
   },
