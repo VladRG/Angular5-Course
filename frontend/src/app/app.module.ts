@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from '@app/layout';
-import { AppPagesModule } from '@app/pages';
+import { AppPagesModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
 
 @NgModule({

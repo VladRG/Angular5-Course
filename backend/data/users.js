@@ -1,14 +1,14 @@
 module.exports = [{
-        username: 'test',
-        password: 'test',
-        firstName: 'test1',
-        lastName: 'testovici1'
+        username: 'admin',
+        password: 'test123',
+        firstName: 'admin',
+        lastName: 'administratovic'
     },
     {
-        username: 'test2',
-        password: 'test2',
-        firstName: 'test2',
-        lastName: 'testovici2'
+        username: 'markz',
+        password: 'markz',
+        firstName: 'Mark',
+        lastName: 'Zuckercorn'
     },
     {
         username: 'test3',

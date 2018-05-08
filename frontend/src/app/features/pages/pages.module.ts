@@ -3,7 +3,7 @@ import { AppAboutComponent } from './about/about.component';
 import { AppContactComponent } from './contact/contact.component';
 import { AppNotFoundComponent } from './not-found/not-found.component';
 import { AppHomeComponent } from './home/home.component';
-import { AppSharedModule } from '../shared/shared.module';
+import { AppSharedModule } from '@app/shared';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppLoginComponent } from './login/login.component';
