@@ -6,8 +6,8 @@
 
 nav {
   background: transparent !important;
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-nav {
@@ -34,4 +34,3 @@ nav {
 .nav-item:focus {
   outline: none;
 }
-

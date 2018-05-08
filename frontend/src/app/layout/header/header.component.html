@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" routerLink="">Home</a>
+
   <ul class="navbar-nav">
     <li class="nav-item" *ngFor='let link of links'>
       <a class="nav-link" [routerLink]="link.url" routerLinkActive="link-active">
@@ -7,6 +8,7 @@
       </a>
     </li>
   </ul>
+
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" routerLink="login" routerLinkActive="link-active">
@@ -17,4 +19,5 @@
       <a href="javascript:void(0)" (click)='login()'>LoginEmit</a>
     </li>
   </ul>
+
 </nav>
