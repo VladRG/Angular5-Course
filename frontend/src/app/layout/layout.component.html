@@ -1,5 +1,5 @@
 <!-- header  -->
-<app-header></app-header>
+<app-header (onLogin)='logLogin($event)' [links]='menuLinks'></app-header>
 
 <div class="container-fluid main-content">
   <router-outlet>

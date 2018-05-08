@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MenuLinkItem } from '../layout.component';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppHeaderComponent implements OnInit {
 
+  @Input()
+  links: Array<MenuLinkItem>;
+
+  @Output()
+  onLogin: EventEmitter<string> = new EventEmitter();
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.links);
+    const copiedLinks = Object.assign({}, this.links);
+  }
+
+  login() {
+    this.onLogin.emit('admin');
+  }
 }
