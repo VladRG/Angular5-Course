@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MenuLinkItem } from '@app/models';
+import { AuthService } from '@app/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,17 +13,16 @@ export class AppHeaderComponent implements OnInit {
   @Input()
   links: Array<MenuLinkItem>;
 
-  @Output()
-  onLogin: EventEmitter<string> = new EventEmitter();
+  constructor(public service: AuthService, private router: Router) {
 
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.links);
-    const copiedLinks = Object.assign({}, this.links);
   }
 
-  login() {
-    this.onLogin.emit('admin');
+  logout() {
+    this.service.logout();
+    this.router.navigateByUrl('login');
+  }
+
+  ngOnInit() {
+
   }
 }

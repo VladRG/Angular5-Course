@@ -2,15 +2,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Credentials } from '@app/models';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router: Router) {
+  }
 
   private TOKEN_KEY = 'access_token';
 
   login(credentials: Credentials): Observable<Credentials> {
-    return this.httpClient.post<Credentials>('login', credentials);
+    return this.httpClient.post<Credentials>('login', credentials)
+      .pipe(
+        tap((response) => {
+          this.router.navigateByUrl('');
+        })
+      );
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
   }
 
   setUser(credentials: Credentials) {
@@ -27,6 +39,13 @@ export class AuthService {
   }
 
   getToken(): string {
-    return localStorage.getItem(this.TOKEN_KEY);
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    return token;
   }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+
 }

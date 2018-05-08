@@ -95,7 +95,7 @@ app.post('/login', function (req, res) {
     if (existingUser && existingUser.password === req.body.password) {
         res.statusCode = 200;
         res.setHeader('Authorization', JSON.stringify(req.body));
-        res.send(req.body)
+        res.send(existingUser)
     } else {
         res.statusCode = 401;
         res.send('Bad Credentials!');

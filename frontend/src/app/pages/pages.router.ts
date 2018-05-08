@@ -6,6 +6,7 @@ import { AppAboutComponent } from './about/about.component';
 import { AppLoginComponent } from './login/login.component';
 import { AppContactComponent } from './contact/contact.component';
 import { AppNotFoundComponent } from './not-found/not-found.component';
+import { AppRouteGuard } from '@app/core';
 
 const pagesRoutes: Routes = [
   {
@@ -22,7 +23,8 @@ const pagesRoutes: Routes = [
   },
   {
     path: 'contact',
-    component: AppContactComponent
+    component: AppContactComponent,
+    canActivate: [AppRouteGuard]
   },
   {
     path: '**',
