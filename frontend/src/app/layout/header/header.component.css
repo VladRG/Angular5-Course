@@ -6,16 +6,32 @@
 
 nav {
   background: transparent !important;
+  /* display: flex;
+  justify-content: space-between; */
 }
 
-.active {
-  color: red;
+.navbar-nav {
+  height: 24px;
+  margin-top: 45px;
+}
+
+.nav-link {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  padding: 0 16px 0 16px !important;
+}
+
+.link-active {
+  border-bottom: 3px solid orange;
 }
 
 .nav-item {
   cursor: pointer;
+  height: 24px;
 }
 
 .nav-item:focus {
   outline: none;
 }
+

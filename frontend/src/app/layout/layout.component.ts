@@ -9,7 +9,6 @@ export class AppLayoutComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

@@ -3,11 +3,15 @@
     <form #loginForm='ngForm'>
       <div class="form-group">
         <span class="control-label">Username</span>
-        <input required class="form-control" type="text" name="username" placeholder="Username" [(ngModel)]='username' />
+        <input #username='ngModel'  required 
+        class="form-control" type="text" name="username" 
+        placeholder="Username" [(ngModel)]='credentials.username' />
       </div>
       <div class="form-group">
         <span class="control-label">Password</span>
-        <input required minlength="5" class="form-control" type="password" name="password" placeholder="Password " [(ngModel)]='password'
+        <input #password='ngModel' required 
+        minlength="5" class="form-control" type="password" name="password"
+         placeholder="Password " [(ngModel)]='credentials.password'
         />
       </div>
       <span *ngIf='loginForm.submitted && loginForm.form.value.password.length < 8'>Min Length is 5</span>

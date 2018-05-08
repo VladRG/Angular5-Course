@@ -16,11 +16,12 @@ import { AppPagesModule } from './pages/pages.module';
 import { CommonModule } from '@angular/common';
 import { AppLoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppHomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppContactComponent
+    component: AppHomeComponent
   },
   {
     path: 'about',
