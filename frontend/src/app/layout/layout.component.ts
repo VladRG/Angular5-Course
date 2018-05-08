@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { menuLinks } from './menu-links';
 import { MenuLinkItem } from '../models/MenuLink';
+import { ScreenService } from '@app/core';
 
 @Component({
   selector: 'app-layout',
@@ -9,10 +10,18 @@ import { MenuLinkItem } from '../models/MenuLink';
 })
 export class AppLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: ScreenService) { }
 
-  headerHeight = 300;
   menuLinks: Array<MenuLinkItem>;
+
+  @HostListener('window:resize', ['$event.target.innerWidth'])
+  onWindowResize(width) {
+    this.service.setType(width);
+  }
+
+  onScroll(event) {
+    console.log(event.target.scrollTop);
+  }
 
   ngOnInit() {
     this.menuLinks = menuLinks.slice();

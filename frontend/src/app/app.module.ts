@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from '@app/layout';
-import { AppPagesModule } from '@app/features';
+import { AppPagesModule, UserModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { AppCoreModule } from '@app/core';
 
     // Feature Module
     AppLayoutModule,
-    AppPagesModule,
+    UserModule,
+    AppPagesModule
   ],
   bootstrap: [AppComponent]
 })

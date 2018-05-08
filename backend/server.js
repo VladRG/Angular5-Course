@@ -36,7 +36,7 @@ app.get('/user', function (req, res) {
 
     res.statusCode = 200;
     res.send({
-        users: paginatedUsers,
+        data: paginatedUsers,
         total: users.length
     });
 

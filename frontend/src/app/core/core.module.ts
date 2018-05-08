@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppSharedModule } from '@app/shared';
 import { ApiInterceptor, TokenInterceptor } from './interceptors';
-import { AuthService } from './services';
+import { AuthService, UserService, ScreenService } from './services';
 import { AppRouteGuard } from '@app/core/guards';
 
 @NgModule({
@@ -13,6 +13,8 @@ import { AppRouteGuard } from '@app/core/guards';
   providers: [
     AuthService,
     AppRouteGuard,
+    UserService,
+    ScreenService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,

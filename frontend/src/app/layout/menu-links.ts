@@ -8,5 +8,8 @@ export const menuLinks: Array<MenuLinkItem> = [
   {
     label: 'About',
     url: 'about'
+  }, {
+    label: 'Users',
+    url: 'user'
   }
 ];

@@ -1,7 +1,10 @@
 <!-- header  -->
 <app-header (onLogin)='logLogin($event)' [links]='menuLinks'></app-header>
 
-<div class="container-fluid main-content">
+<div>
+  <h2>Compatibility mode: {{service.screenType}}</h2>
+</div>
+<div class="container-fluid main-content" (scroll)='onScroll($event)'>
   <router-outlet>
 
   </router-outlet>
