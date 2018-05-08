@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -12,6 +11,12 @@
     "typeRoots": [
       "node_modules/@types"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": [
+        "./src/app/*"
+      ]
+    },
     "lib": [
       "es2017",
       "dom"

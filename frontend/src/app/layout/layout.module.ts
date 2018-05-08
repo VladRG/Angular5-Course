@@ -4,16 +4,17 @@ import { AppHeaderComponent } from './header/header.component';
 import { AppFooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AppSharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     AppLayoutComponent,
     AppHeaderComponent,
-    AppFooterComponent,
+    AppFooterComponent
   ],
   imports: [
-    CommonModule,
-    RouterModule
+    RouterModule,
+    AppSharedModule
   ],
   providers: [
     // Services
