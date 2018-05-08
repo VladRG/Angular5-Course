@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Credentials } from '../models/Credentials';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,29 @@ import { Credentials } from '../models/Credentials';
 export class AppLoginComponent implements OnInit {
 
   credentials: Credentials;
+  message = '';
 
-  constructor() {
+  constructor(private service: AuthService) {
     this.credentials = new Credentials();
   }
 
-  login(username, password) {
-    console.log(username);
-    console.log(password);
+  login() {
+    this.service.login(this.credentials)
+      .subscribe((response: Credentials) => {
+        this.service.setUser(response);
+      }, errorResponse => {
+        this.message = errorResponse.error;
+      });
   }
 
   ngOnInit() { }
 
   getIsRequired(element) {
     return element.errors && element.errors.required;
+  }
+
+  reset() {
+    this.message = '';
   }
 
   getHasMinLength(element) {

@@ -3,13 +3,13 @@
     <form #loginForm='ngForm'>
       <div class="form-group">
         <span class="control-label">Username</span>
-        <input #username='ngModel' required class="form-control" type="text" name="username" placeholder="Username" [(ngModel)]='credentials.username'
+        <input (input)='reset()' #username='ngModel' required class="form-control" type="text" name="username" placeholder="Username" [(ngModel)]='credentials.username'
         />
         <span *ngIf="getIsRequired(username)">Username is required</span>
       </div>
       <div class="form-group">
         <span class="control-label">Password</span>
-        <input #password='ngModel' required minlength="5" class="form-control" type="password" name="password" placeholder="Password "
+        <input (input)='reset()' #password='ngModel' required minlength="5" class="form-control" type="password" name="password" placeholder="Password "
           [(ngModel)]='credentials.password' />
         <span *ngIf="getIsRequired(password)">
           Password is required
@@ -18,7 +18,8 @@
           Password must have {{password.errors.minlength.requiredLength}}, currently {{password.errors.minlength.actualLength}}
         </span>
       </div>
-      <button [disabled]='loginForm.form.invalid' (click)='login(username, password)' class="btn btn-primary">
+      <span *ngIf="message">{{message}}</span>
+      <button [disabled]='loginForm.form.invalid' (click)='login()' class="btn btn-primary">
         Login
       </button>
     </form>

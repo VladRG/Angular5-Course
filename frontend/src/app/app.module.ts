@@ -17,6 +17,9 @@ import { CommonModule } from '@angular/common';
 import { AppLoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppHomeComponent } from './pages/home/home.component';
+import { AuthService } from './login/auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './login/jwt.interceptor';
 
 const routes: Routes = [
   {
@@ -56,9 +59,16 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    AppPagesModule
+    AppPagesModule,
+    HttpClientModule
   ],
   providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
