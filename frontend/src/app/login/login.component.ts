@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Credentials } from '../models/Credentials';
 
 @Component({
   selector: 'app-login',
@@ -7,23 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppLoginComponent implements OnInit {
 
-  credentials: {
-    username: string,
-    password: string
-  };
+  credentials: Credentials;
 
-  constructor() { 
-    this.credentials = {
-      username: '',
-      password: ''
-    };
+  constructor() {
+    this.credentials = new Credentials();
   }
 
-  login(loginForm) {
-    console.log();
+  login(username, password) {
+    console.log(username);
+    console.log(password);
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  getIsRequired(element) {
+    return element.errors && element.errors.required;
   }
 
+  getHasMinLength(element) {
+    return element.errors && element.errors.minlength;
+  }
+
+  logMe(me) {
+    console.log(me);
+  }
 }

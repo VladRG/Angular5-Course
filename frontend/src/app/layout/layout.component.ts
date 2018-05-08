@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { menuLinks } from './menu-links';
+import { MenuLinkItem } from '../models/MenuLink';
 
 @Component({
   selector: 'app-layout',
@@ -20,9 +21,4 @@ export class AppLayoutComponent implements OnInit {
   logLogin(username) {
     console.log(username);
   }
-}
-
-export class MenuLinkItem {
-  label: string;
-  url: string;
 }

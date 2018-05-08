@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MenuLinkItem } from '../layout.component';
+import { MenuLinkItem } from '../../models/MenuLink';
 
 @Component({
   selector: 'app-header',

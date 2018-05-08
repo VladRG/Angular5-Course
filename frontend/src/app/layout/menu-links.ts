@@ -1,4 +1,4 @@
-import { MenuLinkItem } from './layout.component';
+import { MenuLinkItem } from '../models/MenuLink';
 
 export const menuLinks: Array<MenuLinkItem> = [
   {
