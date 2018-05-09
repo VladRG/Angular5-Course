@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule, MatTableModule, MatIconModule } from '@angular/material';
+import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule, MatTableModule, MatIconModule, MatPaginatorModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +16,7 @@ import { EditableCellComponent } from '@app/shared/components';
     MatButtonModule,
     MatCardModule,
     MatTableModule,
+    MatPaginatorModule,
     MatIconModule,
     HttpClientModule
   ],
@@ -29,6 +30,7 @@ import { EditableCellComponent } from '@app/shared/components';
     MatCardModule,
     MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
     HttpClientModule,
     EditableCellComponent
   ],

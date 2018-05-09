@@ -5,8 +5,8 @@ import { BaseResponse, BaseEntity } from '@app/models';
 export class BaseHttpService<TResponse extends BaseResponse> {
   constructor(private client: HttpClient, private url: string) { }
 
-  get(): Observable<TResponse> {
-    return this.client.get<TResponse>(this.url);
+  get(page?: number, rows?: number): Observable<TResponse> {
+    return this.client.get<TResponse>(`${this.url}?page=${page ? page : 0}&rows=${rows ? rows : 10}`);
   }
 
   find(id: number): Observable<BaseEntity> {
