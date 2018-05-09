@@ -12,33 +12,29 @@ export class HasLoadingSpinnerBase {
   isLoading: boolean;
   message: string;
 
-  public wrapObservableArrayWithSpinner(fetchData: () => Array<Observable<any>>): Observable<any> {
-    this.startSpinner();
-    return forkJoin(...fetchData())
-      .map(data => data)
-      .finally(() => {
-        this.stopSpinner();
-      });
-  }
-
-  public wrapObservableWithSpinner(fetchData: () => Observable<any>): Observable<any> {
-    this.startSpinner();
-    return fetchData()
-      .map(data => data)
-      .finally(() => {
-        this.stopSpinner();
-      });
-  }
-
   public setMessage(message: string) {
     this.message = message;
   }
 
-  private stopSpinner() {
-    this.isLoading = false;
+  public wrapObservableArrayWithSpinner(observables: Array<Observable<any>>): Observable<any> {
+    this.startSpinner();
+    return forkJoin(observables).finally(() => {
+      this.stopSpinner();
+    });
+  }
+
+  public wrapObservableWithSpinner(observable: Observable<any>): Observable<any> {
+    this.startSpinner();
+    return observable.finally(() => {
+      this.stopSpinner();
+    });
   }
 
   private startSpinner() {
     this.isLoading = true;
+  }
+
+  private stopSpinner() {
+    this.isLoading = false;
   }
 }

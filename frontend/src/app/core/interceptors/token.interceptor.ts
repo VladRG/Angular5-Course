@@ -27,13 +27,13 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('Response');
+          // Response
         } else {
           console.log('Request');
         }
       }, (err: any) => {
         if (err instanceof HttpErrorResponse) {
-          console.log('Error Response');
+          // Error Response
         }
       })
     );

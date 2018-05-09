@@ -3,13 +3,14 @@ import { User, UserResponse } from '@app/models';
 import { UserService } from '@app/core';
 import { MatTableDataSource, PageEvent } from '@angular/material';
 import { COLUMNS } from './column.definition';
+import { HasLoadingSpinnerBase } from '@app/shared';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListUsersComponent implements OnInit {
+export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit {
 
   dataSource: MatTableDataSource<User>;
   columns = [];
@@ -24,14 +25,17 @@ export class ListUsersComponent implements OnInit {
   page = 0;
   rows = 10;
 
-  constructor(private service: UserService) { }
+  constructor(private service: UserService) {
+    super();
+  }
 
   ngOnInit() {
     this.setColumns();
     this.dataSource = new MatTableDataSource([]);
-    this.service.get().subscribe((response: UserResponse) => {
-      this.updateDataSource(response);
-    });
+    this.wrapObservableWithSpinner(this.service.get())
+      .subscribe((response: UserResponse) => {
+        this.updateDataSource(response);
+      });
   }
 
   changePage(pageEvent: PageEvent) {

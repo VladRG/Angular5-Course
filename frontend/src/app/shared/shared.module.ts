@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/components';
+import { CapitalizePipe } from '@app/shared/pipes';
 
 @NgModule({
   imports: [
@@ -23,6 +24,11 @@ import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/comp
     MatIconModule,
     HttpClientModule
   ],
+  declarations: [
+    EditableCellComponent,
+    LoadingSpinnerComponent,
+    CapitalizePipe
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -36,11 +42,8 @@ import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/comp
     MatPaginatorModule,
     HttpClientModule,
     EditableCellComponent,
-    LoadingSpinnerComponent
-  ],
-  declarations: [
-    EditableCellComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CapitalizePipe
   ]
 })
 export class AppSharedModule { }

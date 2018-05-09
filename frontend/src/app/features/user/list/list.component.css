@@ -5,3 +5,8 @@
 thead {
   width: 100%;
 }
+
+.mat-card-subtitle {
+  display: flex;
+  justify-content: space-between;
+}

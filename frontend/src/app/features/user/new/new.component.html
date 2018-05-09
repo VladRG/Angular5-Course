@@ -1,0 +1,36 @@
+<div class="row">
+  <mat-card class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xs-12">
+    <mat-card-subtitle>New User</mat-card-subtitle>
+    <mat-card-content>
+      <form #newUserForm='ngForm'>
+        <mat-form-field>
+          <input matInput required type="text" placeholder="Username" #username='ngModel' name="username" [(ngModel)]='user.username' />
+          <mat-hint>Type the username for the new user</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput required type="password" placeholder="Password" #password='ngModel' name="password" [(ngModel)]='user.password' />
+          <mat-hint>Type the password for the new user</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput required type="text" placeholder="First Name" #firstName='ngModel' name="firstName" [(ngModel)]='user.firstName' />
+          <mat-hint>Type the first name for the new user</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput required type="text" placeholder="Last Name" #lastName='ngModel' name="lastName" [(ngModel)]='user.lastName' />
+          <mat-hint>Type the last name for the new user</mat-hint>
+        </mat-form-field>
+        <div class="button-row" style="margin-top: 12px;">
+          <button (click)='save()' mat-raised-button color="primary">
+            SAVE
+          </button>
+          <button (click)='cancel()' mat-raised-button color="warn">
+            CANCEL
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

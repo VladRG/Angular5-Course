@@ -1,4 +1,4 @@
-<div class="spinner-container">
+<div class="spinner-container" [ngClass]="{'no-click': isLoading}">
   <div class="spinner" *ngIf="isLoading">
     <div class="sk-circle1 sk-child"></div>
     <div class="sk-circle2 sk-child"></div>
