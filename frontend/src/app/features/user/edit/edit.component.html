@@ -1,7 +1,7 @@
 <mat-error class="row">
   <mat-card class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 col-xs-12">
-    <mat-card-subtitle>New User</mat-card-subtitle>
+    <mat-card-subtitle>Edit User</mat-card-subtitle>
     <mat-card-content>
-      <app-user-form (onSave)='save($event)' (onCancel)='cancel()'></app-user-form>
+      <app-user-form [user]='user' (onSave)='save($event)' (onCancel)='cancel()'></app-user-form>
     </mat-card-content>
   </mat-card>

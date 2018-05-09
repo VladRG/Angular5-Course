@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (event instanceof HttpResponse) {
           // Response
         } else {
-          console.log('Request');
+          // Request
         }
       }, (err: any) => {
         if (err instanceof HttpErrorResponse) {

@@ -58,6 +58,7 @@ app.post('/user', function (req, res) {
 });
 
 app.put('/user/:id', function (req, res) {
+
     const user = users.filter(entity => entity.id === req.body.id)[0];
     if (!user) {
         res.statusCode = 404;
@@ -84,8 +85,7 @@ app.delete('/user/:username', function (req, res) {
 })
 
 app.get('/user/:id', function (req, res) {
-    const id = req.param('id');
-    const user = users.filter(entity => entity.id === id)[0];
+    const user = users.filter(entity => entity.id === parseInt(req.params.id))[0];
     if (user) {
         res.send(user);
     } else {

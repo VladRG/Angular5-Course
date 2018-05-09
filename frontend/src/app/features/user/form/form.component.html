@@ -1,0 +1,41 @@
+<form #userForm='ngForm' *ngIf="user">
+  <mat-form-field>
+    <input matInput required type="text" placeholder="Username" #username='ngModel' name="username" [(ngModel)]='user.username'
+    />
+    <mat-hint>Type the username for the new user</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput required type="password" placeholder="Password" #password='ngModel' name="password" [(ngModel)]='user.password'
+    />
+    <mat-hint>Type the password for the new user</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput required type="password" placeholder="Password Confirmation" #passwordConfirmation='ngModel' name="passwordConfirmation" [(ngModel)]='confirmPassword'
+    />
+    <mat-hint>Retype password</mat-hint>
+    <mat-error *ngIf="!checkPassword(password, passwordConfirmation)"></mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput required type="text" placeholder="First Name" #firstName='ngModel' name="firstName" [(ngModel)]='user.firstName'
+    />
+    <mat-hint>Type the first name for the new user</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput required type="text" placeholder="Last Name" #lastName='ngModel' name="lastName" [(ngModel)]='user.lastName'
+    />
+    <mat-hint>Type the last name for the new user</mat-hint>
+  </mat-form-field>
+
+  <div class="button-row" style="margin-top: 12px;">
+    <button [disabled]='userForm.form.invalid || !checkPassword(password, passwordConfirmation)' (click)='save()' mat-raised-button color="primary">
+      SAVE
+    </button>
+    <button (click)='cancel()' mat-raised-button color="warn">
+      CANCEL
+    </button>
+  </div>
+</form>
