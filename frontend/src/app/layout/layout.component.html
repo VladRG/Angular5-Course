@@ -1,6 +1,11 @@
 <!-- header  -->
 <app-header (onLogin)='logLogin($event)' [links]='menuLinks'></app-header>
 
+<mat-card>
+  <mat-card-title>
+    {{pageName}}
+  </mat-card-title>
+</mat-card>
 <div #content class="container-fluid main-content" (scroll)='onScroll($event)'>
   <router-outlet>
 

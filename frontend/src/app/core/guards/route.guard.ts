@@ -14,7 +14,7 @@ export class AppRouteGuard implements CanActivate {
       return true;
     }
 
-    this.router.navigateByUrl('about');
+    this.router.navigateByUrl('login');
     return false;
   }
 }

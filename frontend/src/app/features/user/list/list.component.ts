@@ -5,6 +5,7 @@ import { MatTableDataSource, PageEvent, MatDialog } from '@angular/material';
 import { COLUMNS } from './column.definition';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ModalConfirmationComponent } from '@app/shared/components/modal-confirmation/modal-confirmation.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -25,13 +26,18 @@ export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit 
   page = 0;
   rows = 10;
 
-  constructor(private service: UserService, private dialog: MatDialog) {
+  constructor(private service: UserService, private dialog: MatDialog, private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit() {
     this.setColumns();
     this.dataSource = new MatTableDataSource([]);
+
+    // this.route.data.subscribe((data: any) => {
+    //   this.updateDataSource(data.users as UserResponse);
+    // });
+
     this.wrapObservableWithSpinner(this.service.get())
       .subscribe((response: UserResponse) => {
         this.updateDataSource(response);
@@ -48,7 +54,7 @@ export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit 
   }
 
   search() {
-    console.log(this.filter);
+
   }
 
   delete(user: User) {

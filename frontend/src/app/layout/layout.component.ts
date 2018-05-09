@@ -3,6 +3,7 @@ import { menuLinks } from './menu-links';
 import { MenuLinkItem } from '../models/MenuLink';
 import { ScreenService } from '@app/core';
 import { state, style, transition, animate, trigger } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -19,7 +20,13 @@ import { state, style, transition, animate, trigger } from '@angular/animations'
 })
 export class AppLayoutComponent implements OnInit {
 
-  constructor(public service: ScreenService) { }
+  constructor(public service: ScreenService, private route: ActivatedRoute) {
+    this.route.data.subscribe((data) => {
+      this.pageName = data.pageName;
+    });
+  }
+
+  pageName: string;
 
   @ViewChild('content')
   content: ElementRef;

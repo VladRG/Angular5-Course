@@ -19,28 +19,29 @@ app.get('/', function (req, res) {
 
 app.get('/user', function (req, res) {
 
+    setTimeout(() => {
 
-    let page = 0;
-    let rows = 10;
-    if (req.query.page) {
-        page = parseInt(req.query.page);
-    }
+        let page = 0;
+        let rows = 10;
+        if (req.query.page) {
+            page = parseInt(req.query.page);
+        }
 
-    if (req.query.rows) {
-        rows = parseInt(req.query.rows);
-    }
+        if (req.query.rows) {
+            rows = parseInt(req.query.rows);
+        }
 
-    const expectedEndIndex = page * rows + rows;
-    const index = expectedEndIndex < users.length ? expectedEndIndex : users.length
-    paginatedUsers = users.slice(page * rows, expectedEndIndex);
+        const expectedEndIndex = page * rows + rows;
+        const index = expectedEndIndex < users.length ? expectedEndIndex : users.length
+        paginatedUsers = users.slice(page * rows, expectedEndIndex);
 
 
-    res.statusCode = 200;
-    res.send({
-        data: paginatedUsers,
-        total: users.length
-    });
-
+        res.statusCode = 200;
+        res.send({
+            data: paginatedUsers,
+            total: users.length
+        });
+    }, 5000);
 });
 
 app.post('/user', function (req, res) {
