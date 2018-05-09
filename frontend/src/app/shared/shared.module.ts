@@ -21,8 +21,7 @@ import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/comp
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    HttpClientModule,
-    LoadingSpinnerComponent
+    HttpClientModule
   ],
   exports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/comp
     MatIconModule,
     MatPaginatorModule,
     HttpClientModule,
-    EditableCellComponent
+    EditableCellComponent,
+    LoadingSpinnerComponent
   ],
   declarations: [
     EditableCellComponent,
