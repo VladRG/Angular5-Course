@@ -18,6 +18,18 @@ export class ScreenService {
       this.screenType = ScreenType.PHONE;
     }
   }
+
+  isDesktopMode(): boolean {
+    return this.screenType === ScreenType.DESKTOP;
+  }
+
+  isTabletMode(): boolean {
+    return this.screenType === ScreenType.TABLET;
+  }
+
+  isPhoneMode(): boolean {
+    return this.screenType === ScreenType.PHONE;
+  }
 }
 
 export enum ScreenType {

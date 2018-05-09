@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MenuLinkItem } from '@app/models';
-import { AuthService } from '@app/core';
+import { AuthService, ScreenService } from '@app/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,11 @@ export class AppHeaderComponent implements OnInit {
   @Input()
   links: Array<MenuLinkItem>;
 
-  constructor(public service: AuthService, private router: Router) {
+  constructor(
+    public service: AuthService,
+    public screenService: ScreenService,
+    private router: Router,
+  ) {
 
   }
 
