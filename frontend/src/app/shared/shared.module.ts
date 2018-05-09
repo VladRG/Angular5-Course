@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule, MatTableModule, MatIconModule, MatPaginatorModule } from '@angular/material';
+import {
+  MatFormFieldModule, MatButtonModule,
+  MatInputModule, MatCardModule, MatTableModule, MatIconModule, MatPaginatorModule
+} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EditableCellComponent } from '@app/shared/components';
+import { EditableCellComponent, LoadingSpinnerComponent } from '@app/shared/components';
 
 @NgModule({
   imports: [
@@ -18,7 +21,8 @@ import { EditableCellComponent } from '@app/shared/components';
     MatTableModule,
     MatPaginatorModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingSpinnerComponent
   ],
   exports: [
     CommonModule,
@@ -35,7 +39,8 @@ import { EditableCellComponent } from '@app/shared/components';
     EditableCellComponent
   ],
   declarations: [
-    EditableCellComponent
+    EditableCellComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class AppSharedModule { }
