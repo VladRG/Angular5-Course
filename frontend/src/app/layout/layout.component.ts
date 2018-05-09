@@ -20,14 +20,10 @@ export class AppLayoutComponent implements OnInit {
   }
 
   onScroll(event) {
-    console.log(event.target.scrollTop);
+    // on scroll
   }
 
   ngOnInit() {
     this.menuLinks = menuLinks.slice();
-  }
-
-  logLogin(username) {
-    console.log(username);
   }
 }

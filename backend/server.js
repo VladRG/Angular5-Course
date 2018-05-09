@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 app.get('/user', function (req, res) {
 
     let page = 0;
-    let rows = 0;
+    let rows = 10;
     if (req.query.page) {
         page = parseInt(req.query.page);
     }
@@ -31,7 +31,7 @@ app.get('/user', function (req, res) {
 
     const expectedEndIndex = page * rows + rows;
     const index = expectedEndIndex < users.length ? expectedEndIndex : users.length
-    paginatedUsers = users.slice(page * rows, );
+    paginatedUsers = users.slice(page * rows, expectedEndIndex);
 
 
     res.statusCode = 200;
@@ -48,12 +48,14 @@ app.post('/user', function (req, res) {
         res.statusCode = 401;
         res.send('User exists');
     } else {
-        users.push(req.body);
+        const user = req.body;
+        user.id = users.length + 1;
+        users.push(user);
     }
 });
 
-app.put('/user/:username', function (req, res) {
-    const user = users.filter(entity => entity.username === req.body.username)[0];
+app.put('/user/:id', function (req, res) {
+    const user = users.filter(entity => entity.id === req.body.id)[0];
     if (!user) {
         res.statusCode = 404;
         res.send('User not found');
@@ -78,9 +80,9 @@ app.delete('/user/:username', function (req, res) {
     }
 })
 
-app.get('/user/:username', function (req, res) {
-    const username = req.param('username');
-    const user = users.filter(entity => entity.username === username)[0];
+app.get('/user/:id', function (req, res) {
+    const id = req.param('id');
+    const user = users.filter(entity => entity.id === id)[0];
     if (user) {
         res.send(user);
     } else {
