@@ -70,8 +70,8 @@ app.put('/user/:id', function (req, res) {
     }
 });
 
-app.delete('/user/:username', function (req, res) {
-    const user = users.filter(entity => entity.username === req.body.username)[0];
+app.delete('/user/:id', function (req, res) {
+    const user = users.filter(entity => entity.id === parseInt(req.params.id, 10))[0];
     if (!user) {
         res.statusCode = 404;
         res.send('User not found');

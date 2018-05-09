@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { User, UserResponse } from '@app/models';
 import { UserService } from '@app/core';
-import { MatTableDataSource, PageEvent } from '@angular/material';
+import { MatTableDataSource, PageEvent, MatDialog } from '@angular/material';
 import { COLUMNS } from './column.definition';
 import { HasLoadingSpinnerBase } from '@app/shared';
+import { ModalConfirmationComponent } from '@app/shared/components/modal-confirmation/modal-confirmation.component';
 
 @Component({
   selector: 'app-list',
@@ -17,7 +18,6 @@ export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit 
   columnDefs = [];
   editing = false;
   actionColumnWidth = 160;
-
   filter: User = new User();
 
   // pagination properties
@@ -25,7 +25,7 @@ export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit 
   page = 0;
   rows = 10;
 
-  constructor(private service: UserService) {
+  constructor(private service: UserService, private dialog: MatDialog) {
     super();
   }
 
@@ -51,8 +51,24 @@ export class ListUsersComponent extends HasLoadingSpinnerBase implements OnInit 
     console.log(this.filter);
   }
 
+  delete(user: User) {
+    this.dialog.open(ModalConfirmationComponent, {
+      width: '400px',
+      height: '200px',
+      data: user
+    }).afterClosed().subscribe((response) => {
+      if (response) {
+        // stergem
+        this.service.delete(user).subscribe(() => {
+          this.ngOnInit();
+        }, console.error);
+      }
+    });
+  }
+
   private setColumns() {
     this.columnDefs = COLUMNS.slice();
+    this.columns = [];
     this.columnDefs.forEach(element => {
       this.columns.push(element.property);
     });
