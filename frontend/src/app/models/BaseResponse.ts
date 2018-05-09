@@ -5,4 +5,5 @@ export class BaseResponse {
 
 export class BaseEntity {
   id: number;
+  editing: boolean;
 }

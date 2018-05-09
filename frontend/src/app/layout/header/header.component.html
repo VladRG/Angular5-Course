@@ -18,10 +18,12 @@
         Logout
       </a>
     </li>
+    <li>
       <i class="fas fa-2x" [ngClass]="{
         'fa-laptop': screenService.isDesktopMode(),
         'fa-tablet': screenService.isTabletMode(),
         'fa-mobile-alt': screenService.isPhoneMode()}">
       </i>
+    </li>
   </ul>
 </nav>

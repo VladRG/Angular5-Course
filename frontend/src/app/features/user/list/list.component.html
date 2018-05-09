@@ -1,20 +1,39 @@
 <div class="row">
-  <div class="col-md-6 col-xs-12 offset-md-3">
-    <table class="table table-responsive">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{user.username}}</td>
-          <td>{{user.firstName}}</td>
-          <td>{{user.lastName}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <mat-card class="col-md-8 col-xs-12 offset-md-2">
+    <mat-card-subtitle>Users</mat-card-subtitle>
+    <mat-card-content style="overflow-x: auto;">
+      <mat-table [dataSource]='dataSource'>
+
+        <ng-container *ngFor="let column of columnDefs">
+          <ng-container matColumnDef="{{column.property}}">
+            <mat-header-cell mat-sort-header *matHeaderCellDef [style.min-width.px]='column.width'>
+              <div>{{column.label}}</div>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element" [style.min-width.px]='column.width'>
+              <app-editable-cell [element]="element" property="{{column.property}}">
+
+              </app-editable-cell>
+            </mat-cell>
+          </ng-container>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef class="text-center" [style.min-width.px]='actionColumnWidth'> Actions </mat-header-cell>
+          <mat-cell class="text-center" *matCellDef="let element" [style.min-width.px]='actionColumnWidth'>
+            <button (click)='edit(element)' type="button" mat-button aria-hidden="true" aria-label="Edit">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="delete(element)" mat-button color="warn" type="button" aria-hidden="true" aria-label="Delete ">
+              <i class="fas fa-plus"></i>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
 </div>

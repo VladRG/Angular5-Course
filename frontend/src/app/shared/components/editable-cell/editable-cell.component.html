@@ -1,0 +1,2 @@
+<input (blur)="edit()" type="text" value="{{element[property]}}" [(ngModel)]='element[property]' *ngIf="element.editing">
+<span (dblclick)='edit()' *ngIf="!element.editing">{{element[property]}}</span>
