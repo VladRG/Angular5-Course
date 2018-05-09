@@ -13,16 +13,36 @@ export class NewUserComponent implements OnInit {
   constructor(private service: UserService, private router: Router) { }
 
   user: User;
+  message = '';
 
   ngOnInit() {
     this.user = new User();
   }
 
   save() {
-    this.service.store(this.user).subscribe();
+    this.service.store(this.user).subscribe(
+      (response: any) => {
+        this.redirectToList();
+      },
+      (errorResponse) => {
+        this.message = errorResponse.error;
+      }
+    );
   }
 
   cancel() {
+    this.redirectToList();
+  }
+
+  private redirectToList() {
     this.router.navigateByUrl('user');
+  }
+
+  log(el){
+    console.log(el);
+  }
+
+  checkPassword(password, confirm){
+    return password.value === confirm.value;
   }
 }

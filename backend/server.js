@@ -52,6 +52,8 @@ app.post('/user', function (req, res) {
         const user = req.body;
         user.id = users.length + 1;
         users.push(user);
+        res.statusCode = 201;
+        res.send();
     }
 });
 
