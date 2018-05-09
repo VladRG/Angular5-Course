@@ -3,5 +3,8 @@
     <mat-card-subtitle>New User</mat-card-subtitle>
     <mat-card-content>
       <app-user-form (onSave)='save($event)' (onCancel)='cancel()'></app-user-form>
+      <div *ngIf="message">
+        {{message}}
+      </div>
     </mat-card-content>
   </mat-card>

@@ -16,11 +16,12 @@ export class EditUserComponent implements OnInit {
     private service: UserService
   ) {
     this.route.params.subscribe((params) => {
-      this.getUser(params.id);
+      this.getUser(parseInt(params.id, 10));
     });
   }
 
   user: User;
+  message: string;
 
   ngOnInit() { }
 
@@ -30,7 +31,7 @@ export class EditUserComponent implements OnInit {
         this.redirectToList();
       },
       (errorResponse) => {
-
+        this.message = errorResponse.error;
       }
     );
   }
@@ -43,9 +44,8 @@ export class EditUserComponent implements OnInit {
     this.router.navigateByUrl('user');
   }
 
-  private getUser(id: string) {
-    const idInt = parseInt(id, 10);
-    this.service.find(idInt).subscribe((response: User) => {
+  private getUser(id: number) {
+    this.service.find(id).subscribe((response: User) => {
       this.user = response;
     }, console.error);
   }

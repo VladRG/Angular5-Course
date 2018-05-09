@@ -58,7 +58,6 @@ app.post('/user', function (req, res) {
 });
 
 app.put('/user/:id', function (req, res) {
-
     const user = users.filter(entity => entity.id === req.body.id)[0];
     if (!user) {
         res.statusCode = 404;
